@@ -1,5 +1,48 @@
 @extends('admin.index')
 @section('content')
+@push('js')
+
+<script>
+  $(document).ready(function(){
+    @if($city->country_id)
+
+       $.ajax({
+          url:"{{ admin_url('states/create') }}",
+          type:'get',
+          dataType:'html',
+          data:{country_id:"{{$city->country_id}}",select:"{{$city->city_id}}"},
+          success: function(data){
+//alert(data);
+              $('.city').html(data);
+          }
+
+        });
+
+    @endif
+    $(document).on('change','.country_id',function(){
+      //alert("changed");
+      var country=$('.country_id option:selected').val();
+      if(country>0){
+        $.ajax({
+          url:"{{ admin_url('states/create') }}",
+          type:'get',
+          dataType:'html',
+          data:{country_id:country,select:''},
+          success: function(data){
+//alert(data);
+              $('.city').html(data);
+          }
+
+        });
+      }else{
+        $('.city').html(' {!! Form::select('city_id',[],'................................',['class'=>'form-control city','placeholder'=>'..................'])!!}');
+      }
+
+    });
+  });
+</script>
+
+@endpush
 
 <div class="box">
   <div class="box-header">
@@ -19,7 +62,15 @@
         <div class="form-group">
 
               {!!  Form::label('country_id','Country Id')!!}
-             {!! Form::select('country_id',$country_ids,$city->city_id,['class'=>'form-control'])!!}
+              {!! Form::select('country_id',$country_ids,old('country_id'),['class'=>'country_id form-control'])!!}
+        </div>
+
+        
+
+          <div class="form-group">
+
+              {!!  Form::label('city_id','City')!!}
+            {!! Form::select('city_id',[],$city->city_id,['class'=>'form-control city'])!!}
         </div>
 
 

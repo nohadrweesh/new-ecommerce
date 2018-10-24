@@ -5,11 +5,11 @@
 <script>
   $(document).ready(function(){
     @if(old('country_id'))
-       $.ajax({
+          $.ajax({
           url:"{{ admin_url('states/create') }}",
           type:'get',
           dataType:'html',
-          data:{country_id:"{{old('country_id')}}",select:'{{old('city_id')}}'},
+          data:{country_id:"{{old('country_id')}}",select:"{{old('city_id')}}"},
           success: function(data){
 //alert(data);
               $('.city').html(data);
@@ -33,6 +33,8 @@
           }
 
         });
+      }else{
+        $('.city').html(' {!! Form::select('city_id',[],'................................',['class'=>'form-control city','placeholder'=>'..................'])!!}');
       }
 
     });

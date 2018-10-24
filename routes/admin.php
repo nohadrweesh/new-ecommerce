@@ -25,6 +25,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'], function () {
 
 		Route::resource('states','StatesController');
 		Route::delete('states/destroy/all','StatesController@multi_delete');
+
+		Route::resource('departments','DepartmentsController');
         
         Route::get('settings','SettingsController@settings');
         Route::post('settings','SettingsController@settings_save');

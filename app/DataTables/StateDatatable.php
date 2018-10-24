@@ -38,8 +38,8 @@ class StateDatatable extends DataTable
     public function query()
     {
        // return $model->newQuery()->select('id', 'add-your-columns-here', 'created_at', 'updated_at');
-        //return User::query();
-        return State::query()->with('city')->with('country')->select('states.*');
+       // return State::query();
+        //return State::query()->with('city')->with('country')->select('states.*');
     }
   
     /**

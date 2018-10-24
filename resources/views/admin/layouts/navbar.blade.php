@@ -189,6 +189,31 @@
           </ul>
         </li>
 
+
+
+        <li class=" treeview">
+          <a href="#">
+            <i class="fa fa-flag"></i> <span>Departments</span>
+           
+              @if(direction()=='ltr')
+               <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+              @else
+              <span class="pull-left-container">
+                <i class="fa fa-angle-right pull-left"></i>
+              </span>
+              @endif
+            
+          </a>
+          <ul class="treeview-menu">
+           
+            <li><a href="{{admin_url('departments')}}"><i class="fa fa-flag"></i>Departments</a></li>
+            <li><a href="{{admin_url('departments/create')}}"><i class="fa fa-plus"></i>Add Department</a></li>
+            
+          </ul>
+        </li>
+
       </ul>
     </section>
     <!-- /.sidebar -->
